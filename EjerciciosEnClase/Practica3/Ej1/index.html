@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Web</title>
+  <style>
+    body {
+      background-color: #fce4ec; /* Light pink background */
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculadora {
+      background-color: #f8bbd0; /* Deeper pink */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #ad1457; /* Darker pink for title */
+    }
+    input, select, button {
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #f48fb1; /* Lighter pink border */
+    }
+    button {
+      background-color: #ec407a; /* Medium pink button */
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d81b60; /* Darker pink on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="calculadora">
+    <h1>Calculadora Web</h1>
+    <form action="/calcular" method="POST">
+      <input type="number" name="a" placeholder="Valor de a" required>
+      <input type="number" name="b" placeholder="Valor de b" required>
+      <select name="operacion">
+        <option value="sumar">Sumar</option>
+        <option value="restar">Restar</option>
+        <option value="multiplicar">Multiplicar</option>
+        <option value="dividir">Dividir</option>
+      </select>
+      <button type="submit">Calcular</button>
+    </form>
+  </div>
+</body>
+</html>
