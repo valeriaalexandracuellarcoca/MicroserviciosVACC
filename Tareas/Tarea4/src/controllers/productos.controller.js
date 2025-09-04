@@ -1,6 +1,6 @@
 const { productos } = require('../models/data.js');
 
-// Obtener todos los productos (con paginación y filtrado)
+//obtener todos los productos (con paginación y filtrado)
 const getAllProductos = (req, res) => {
     const { marca, page = 1, limit = 10 } = req.query;
     let productosFiltrados = productos;
@@ -22,7 +22,7 @@ const getAllProductos = (req, res) => {
     });
 };
 
-// Obtener un producto por ID
+//obtener un producto por ID
 const getProductoById = (req, res) => {
     const producto = productos.find(p => p.id === parseInt(req.params.id));
     if (!producto) {
@@ -31,7 +31,7 @@ const getProductoById = (req, res) => {
     res.json(producto);
 };
 
-// Crear un nuevo producto
+//crear un nuevo producto
 const createProducto = (req, res) => {
     const { nombre, descripcion, marca, stock } = req.body;
     if (!nombre || !descripcion || !marca || stock === undefined) {
@@ -50,7 +50,7 @@ const createProducto = (req, res) => {
     res.status(201).json(newProducto);
 };
 
-// Actualizar un producto
+//actualizar un producto
 const updateProducto = (req, res) => {
     const producto = productos.find(p => p.id === parseInt(req.params.id));
     if (!producto) {
@@ -66,7 +66,7 @@ const updateProducto = (req, res) => {
     res.json(producto);
 };
 
-// Eliminar un producto
+//eliminar un producto
 const deleteProducto = (req, res) => {
     const productoIndex = productos.findIndex(p => p.id === parseInt(req.params.id));
     if (productoIndex === -1) {

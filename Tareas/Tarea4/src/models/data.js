@@ -1,4 +1,4 @@
-// Simulación de una base de datos en memoria
+//simulación de una base de datos en memoria
 let productos = [
     { id: 1, nombre: 'Laptop HP', descripcion: 'Laptop de 15 pulgadas', marca: 'HP', stock: 50 },
     { id: 2, nombre: 'Teclado Mecánico', descripcion: 'Teclado con switches Cherry MX', marca: 'Corsair', stock: 100 },

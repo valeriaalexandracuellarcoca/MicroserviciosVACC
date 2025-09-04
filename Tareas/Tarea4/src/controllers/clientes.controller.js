@@ -1,11 +1,11 @@
 const { clientes } = require('../models/data.js');
 
-// Obtener todos los clientes
+//obtener todos los clientes
 const getAllClientes = (req, res) => {
     res.json(clientes);
 };
 
-// Obtener un cliente por ID
+//obtener un cliente por ID
 const getClienteById = (req, res) => {
     const cliente = clientes.find(c => c.id === parseInt(req.params.id));
     if (!cliente) {
@@ -14,7 +14,7 @@ const getClienteById = (req, res) => {
     res.json(cliente);
 };
 
-// Crear un nuevo cliente
+//crear un nuevo cliente
 const createCliente = (req, res) => {
     const { ci, nombres, apellidos, sexo } = req.body;
     if (!ci || !nombres || !apellidos || !sexo) {
@@ -33,7 +33,7 @@ const createCliente = (req, res) => {
     res.status(201).json(newCliente);
 };
 
-// Actualizar un cliente
+//actualizar un cliente
 const updateCliente = (req, res) => {
     const cliente = clientes.find(c => c.id === parseInt(req.params.id));
     if (!cliente) {
@@ -49,7 +49,7 @@ const updateCliente = (req, res) => {
     res.json(cliente);
 };
 
-// Eliminar un cliente
+//eliminar un cliente
 const deleteCliente = (req, res) => {
     const clienteIndex = clientes.findIndex(c => c.id === parseInt(req.params.id));
     if (clienteIndex === -1) {

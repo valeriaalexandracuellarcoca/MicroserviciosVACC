@@ -1,11 +1,11 @@
 const { facturas, clientes } = require('../models/data.js');
 
-// Obtener todas las facturas
+//obtener todas las facturas
 const getAllFacturas = (req, res) => {
     res.json(facturas);
 };
 
-// Obtener una factura por ID
+//obtener una factura por ID
 const getFacturaById = (req, res) => {
     const factura = facturas.find(f => f.id === parseInt(req.params.id));
     if (!factura) {
@@ -14,14 +14,14 @@ const getFacturaById = (req, res) => {
     res.json(factura);
 };
 
-// Crear una nueva factura
+//crear una nueva factura
 const createFactura = (req, res) => {
     const { fecha, cliente_id } = req.body;
     if (!fecha || !cliente_id) {
         return res.status(400).json({ message: 'Todos los campos son requeridos: fecha, cliente_id' });
     }
 
-    // Validar que el cliente exista
+    //validar que el cliente exista
     const cliente = clientes.find(c => c.id === parseInt(cliente_id));
     if (!cliente) {
         return res.status(404).json({ message: 'Cliente no encontrado' });
@@ -37,7 +37,7 @@ const createFactura = (req, res) => {
     res.status(201).json(newFactura);
 };
 
-// Actualizar una factura
+//actualizar una factura
 const updateFactura = (req, res) => {
     const factura = facturas.find(f => f.id === parseInt(req.params.id));
     if (!factura) {
@@ -59,7 +59,7 @@ const updateFactura = (req, res) => {
     res.json(factura);
 };
 
-// Eliminar una factura
+//eliminar una factura
 const deleteFactura = (req, res) => {
     const facturaIndex = facturas.findIndex(f => f.id === parseInt(req.params.id));
     if (facturaIndex === -1) {
@@ -70,7 +70,7 @@ const deleteFactura = (req, res) => {
     res.status(204).send();
 };
 
-// Obtener todas las facturas de un cliente específico
+//obtener todas las facturas de un cliente específico
 const getFacturasByCliente = (req, res) => {
     const clienteId = parseInt(req.params.id);
     const cliente = clientes.find(c => c.id === clienteId);

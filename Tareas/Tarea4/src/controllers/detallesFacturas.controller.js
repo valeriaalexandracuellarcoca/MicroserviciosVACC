@@ -1,6 +1,6 @@
 const { detallesFacturas, facturas, productos } = require('../models/data.js');
 
-// Obtener todos los detalles de una factura específica
+//obtener todos los detalles de una factura específica
 const getDetallesByFacturaId = (req, res) => {
     const facturaId = parseInt(req.params.factura_id);
     const factura = facturas.find(f => f.id === facturaId);
@@ -12,7 +12,7 @@ const getDetallesByFacturaId = (req, res) => {
     res.json(detalles);
 };
 
-// Añadir un detalle a una factura
+//añadir un detalle a una factura
 const addDetalleToFactura = (req, res) => {
     const facturaId = parseInt(req.params.factura_id);
     const { producto_id, cantidad, precio } = req.body;
@@ -43,7 +43,7 @@ const addDetalleToFactura = (req, res) => {
     res.status(201).json(newDetalle);
 };
 
-// Actualizar un detalle de factura
+//actualizar un detalle de factura
 const updateDetalle = (req, res) => {
     const detalleId = parseInt(req.params.id);
     const detalle = detallesFacturas.find(d => d.id === detalleId);
@@ -68,7 +68,7 @@ const updateDetalle = (req, res) => {
     res.json(detalle);
 };
 
-// Eliminar un detalle de factura
+//eliminar un detalle de factura
 const deleteDetalle = (req, res) => {
     const detalleId = parseInt(req.params.id);
     const detalleIndex = detallesFacturas.findIndex(d => d.id === detalleId);
