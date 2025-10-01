@@ -1,35 +1,20 @@
-const { MongoClient } = require('mongodb');
-require('dotenv').config();
 
-// Fallback to localhost for local development without Docker
-const host = process.env.MONGO_HOST || 'localhost';
-const port = process.env.MONGO_PORT || 27017;
-const dbName = process.env.MONGO_DB || 'agenda';
+The MIT License (MIT)
 
-const uri = `mongodb://${host}:${port}/${dbName}`;
+Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
+Copyright (c) 2016 Douglas Christopher Wilson <doug@somethingdoug.com>
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-let db;
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-async function connectDB() {
-    if (db) return db;
-    try {
-        await client.connect();
-        console.log(`Conectado a MongoDB en ${host}.`);
-        db = client.db(); // The database name is taken from the URI
-        return db;
-    } catch (error) {
-        console.error("No se pudo conectar a MongoDB.", error);
-        process.exit(1);
-    }
-}
-
-function getDB() {
-    if (!db) {
-        throw new Error("La base de datos no está inicializada. Llama a connectDB primero.");
-    }
-    return db;
-}
-
-module.exports = { connectDB, getDB };
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CL
