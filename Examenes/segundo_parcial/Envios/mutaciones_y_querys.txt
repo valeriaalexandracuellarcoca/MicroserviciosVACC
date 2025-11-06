@@ -1,0 +1,79 @@
+Querys:
+
+query GetEnvioById($id: ID!) {
+  envio(id: $id) {
+    id
+    usuario_id
+    vehiculo_id
+    origen
+    destino
+    fecha_envio
+    estado
+  }
+}
+
+query GetAllEnvios {
+  envios {
+    id
+    usuario_id
+    vehiculo_id
+    origen
+    destino
+    fecha_envio
+    estado
+  }
+}
+
+# Obtener envíos por estado
+query GetEnviosByEstado($estado: String!) {
+  enviosPorEstado(estado: $estado) {
+    id
+    usuario_id
+    vehiculo_id
+    origen
+    destino
+    fecha_envio
+    estado
+  }
+}
+
+Mutations:
+
+# Crear un nuevo envío
+mutation {
+  crearEnvio(usuario_id: 1, vehiculo_id: "3545dfsdfdsfd55", origen: "Calle Junin, Ciudad Sucre", destino: "Calle Sucre, Ciudad Potosi", fecha_envio: "2025-11-07") {
+    id
+    usuario_id
+    origen
+    destino
+    fecha_envio
+    estado
+  }
+}
+
+
+
+
+# Asignar un vehículo a un envío
+
+mutation AssignVehicleToEnvio($id: ID!, $vehiculo_id: String!) {
+
+  asignarVehiculo(id: $id, vehiculo_id: $vehiculo_id) {
+
+    id
+
+    vehiculo_id
+
+    estado
+
+  }
+
+}
+
+# Actualizar el estado de un envío
+mutation UpdateEnvioStatus($id: ID!, $estado: String!) {
+  actualizarEstado(id: $id, estado: $estado) {
+    id
+    estado
+  }
+}
